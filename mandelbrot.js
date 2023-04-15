@@ -1,16 +1,19 @@
 
 
+const CWS_HEIGHT = 400;
+const CWS_WIDTH = 600;
+
 const canvas = document.getElementById('fractal-drawing');
 
 if (canvas.getContext) {
   const ctx = canvas.getContext('2d');
   console.log('ok');
 
-  canvas.height = 400;
-  canvas.width = 400;
+  canvas.height = CWS_HEIGHT;
+  canvas.width = CWS_WIDTH;
 
   ctx.fillStyle = 'rgb(255, 255, 255)';
-  ctx.fillRect(0, 0, 400, 400);
+  ctx.fillRect(0, 0, CWS_HEIGHT, CWS_WIDTH);
 
   for (let x = -2; x < 2; x = x + 0.005 ) {
     for (let y = -2; y < 2; y = y + 0.005 ) {
@@ -76,7 +79,10 @@ if (canvas.getContext) {
       ctx.fillStyle = 'rgb(0, 0, 0)';
     }
     
-    ctx.fillRect(200*x + 300, 200*y + 200, 1, 1);
+    const pixelPositionX = 200*x + ( CWS_WIDTH/2 );
+    const pixelPositionY = 200*y + ( CWS_HEIGHT/2 );
+
+    ctx.fillRect(pixelPositionX, pixelPositionY , 1, 1);
    
   }
 } 
